@@ -37,7 +37,7 @@ public class ResultadoBo {
 	public void atualizar(Resultado resultado) throws SQLException {
 		resultadoEmBranco(resultado);
 		verificarSeResultadoExistePorId(resultado);
-		//validarDataExame(resultado);
+		validarDataExame(resultado);
 		reDao.atualizar(resultado);
 	}
 
