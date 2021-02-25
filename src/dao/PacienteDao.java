@@ -32,12 +32,37 @@ public class PacienteDao {
 			}
 		}
 	}
+	
+	public Paciente consultaPorId(Paciente paciente) throws SQLException {
+		Paciente retorno = null;
+		StringBuilder qry = new StringBuilder();
+		qry.append("SELECT p.idpaciente AS IDPACIENTE, ");
+		qry.append("p.nome AS NOME FROM paciente p ");
+		qry.append("WHERE p.idpaciente like ?");
+
+		try {
+			stmt = conn.prepareStatement(qry.toString());
+			stmt.setInt(1, paciente.getCodigo());
+
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				int codigoPaciente = rs.getInt("IDPACIENTE");
+				String nome = rs.getString("NOME");
+				retorno = new Paciente(codigoPaciente, nome);
+			}
+		} finally {
+			if (stmt != null) {
+				stmt.close();
+			}
+		}
+		return retorno;
+	}
 
 	public List<Paciente> consultarPacientes() throws SQLException {
 		List<Paciente> listaPacientes = new ArrayList<>();
 
 		StringBuilder qry = new StringBuilder();
-		qry.append("SELECT * FROM paciente");
+		qry.append("SELECT * FROM paciente ORDER BY nome");
 
 		try {
 
@@ -129,10 +154,11 @@ public class PacienteDao {
 	public Boolean existePacientePorNome(String nome) throws SQLException {
 		StringBuilder qry = new StringBuilder();
 		qry.append("SELECT nome FROM paciente ");
-		qry.append("where nome like '" + nome + "'");
+		qry.append("where nome like ?");
 
 		try {
 			stmt = conn.prepareStatement(qry.toString());
+			stmt.setString(1, nome);
 
 			ResultSet rs = stmt.executeQuery();
 			return rs.next();

@@ -17,10 +17,10 @@ th, td {
 </style>
 </head>
 <body>
-<form action=pacienteInclusao method=post>
+<form action=novoPaciente method=post>
 <h1>Pacientes</h1>
 <input type="submit" value="Incluir paciente">
-<table class="lista-exames">
+<table>
 <thead>
 <tr>
 <th>PACIENTE</th>
@@ -29,14 +29,14 @@ th, td {
 <tbody>
 <c:forEach var="p" items="${pacientes}">
 <tr>
-<td><a href=paciente?exame.id=${exame.id}> ${p.nome} </a></td>
+<td><a href=paciente?paciente.codigo=${p.codigo}> ${p.nome} </a></td>
 </tr>
 </c:forEach>
 </tbody>
 </table>
 </form>
 
-<form action=novo method=post>
+<form action=novoResultado method=post>
 <h1>Resultados de exame</h1>
 <input type="submit" value="Incluir resultado">
 <table class="listas">

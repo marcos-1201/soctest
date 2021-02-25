@@ -21,7 +21,7 @@ public class NovoResultadoAction {
 	private Resultado resultado;
 	private String erro;
 
-	@Action(value = "/novo", results = { @Result(location = "novoResultado.jsp", name = "ok") })
+	@Action(value = "/novoResultado", results = { @Result(location = "novoResultado.jsp", name = "ok") })
 	public String execute() throws SQLException {
 		try {
 			exames = new ExameBo().consultarExames();

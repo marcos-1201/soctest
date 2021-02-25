@@ -43,7 +43,6 @@ public class ResultadoAction {
 		new ResultadoBo().atualizar(resultado);
 		return "ok";
 		} catch (DomainException e) {
-			e.printStackTrace();
 			erro = e.getMessage();
 			return "erro";
 		}

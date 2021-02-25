@@ -7,6 +7,6 @@
 <title>Erro</title>
 </head>
 <body>
-<h1>${erro}</h1> 
+<h2>${erro}</h2> 
 </body>
 </html>

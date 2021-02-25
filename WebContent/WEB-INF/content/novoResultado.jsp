@@ -7,8 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Resultado</title>
 <style>
-<
-style>.campo-form {
+.campo-form {
 	display: block;
 	margin-bottom: 1em;
 }

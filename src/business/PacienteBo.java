@@ -15,6 +15,10 @@ public class PacienteBo {
 	private int getIdPaciente() throws SQLException {
 		return pDao.getIdPaciente();
 	}
+	
+	public Paciente consultaPorId(Paciente paciente) throws SQLException {
+		return pDao.consultaPorId(paciente);
+	}
 
 	public void criar(Paciente paciente) throws SQLException {
 		nomeEmBranco(paciente);
